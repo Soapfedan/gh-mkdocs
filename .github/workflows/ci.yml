@@ -1,13 +1,17 @@
 name: ci
-On:
-  Push:
-    Branches:
-      - master
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
       - main
-Jobs:
-  Deploy:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deploy:
     runs-on: ubuntu-latest
-    Steps:
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         With:
